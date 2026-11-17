@@ -1,0 +1,12 @@
+{
+  "name": "battleships-browser",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/game.js && node --check src/app.js",
+    "dev": "node tools/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
