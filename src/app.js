@@ -51,12 +51,15 @@ function menuView() {
       <div class="hero-actions">${button('configure', 'BEGIN OPERATION <span aria-hidden="true">→</span>', 'primary')}${button('instructions', 'FIELD MANUAL', 'outline')}</div>
       <div class="hero-stats"><div><strong>02</strong><span>GAME MODES</span></div><div><strong>03</strong><span>GRID SIZES</span></div><div><strong>01</strong><span>DEVICE NEEDED</span></div></div>
     </div>
+    <div class="hero-ocean" aria-hidden="true"></div>
     <div class="hero-art" aria-hidden="true">
       <div class="radar-rings"><span class="radar-sweep"></span><i class="radar-cross radar-cross-a"></i><i class="radar-cross radar-cross-b"></i></div>
-      <div class="hero-ship-shadow"></div>${vessel(0, 'hero-ship')}
+      <div class="duel-ship duel-ship-friendly"><span class="ship-wake"></span>${vessel(0, 'duel-vessel')}<span class="gun-flash"></span></div>
+      <div class="duel-ship duel-ship-hostile"><span class="ship-wake"></span>${vessel(1, 'duel-vessel')}<span class="gun-flash"></span></div>
+      <span class="salvo salvo-friendly"></span><span class="salvo salvo-hostile"></span>
+      <span class="splash splash-hostile"></span><span class="splash splash-friendly"></span>
       <span class="art-tag art-tag-top">SECTOR 07 / NORTH ATLANTIC</span>
-      <span class="art-tag art-tag-bottom">VESSEL DDG-01 <b>◆</b> SIGNAL ACTIVE</span>
-      <span class="radar-dot dot-one"></span><span class="radar-dot dot-two"></span>
+      <span class="art-tag art-tag-bottom">DDG-01 <b>◆</b> ENGAGEMENT ACTIVE</span>
     </div>
     <div class="hero-bottom"><span>01 // DEPLOY</span><span>02 // TARGET</span><span>03 // DOMINATE</span><span class="hero-bottom-end">ALL SYSTEMS NOMINAL</span></div>
   </section>`;
