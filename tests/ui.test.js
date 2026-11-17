@@ -34,7 +34,10 @@ test('original vessel artwork is local and ships stay in one cell', () => {
 test('screens retain board sizes, handoff privacy, and shot feedback', async () => {
   const { root, click } = await launchInterface();
   assert.match(root.innerHTML, /RULE THE/);
-  assert.match(root.innerHTML, /hero-ship/);
+  assert.match(root.innerHTML, /hero-ocean/);
+  assert.equal((root.innerHTML.match(/class="duel-ship duel-ship-/g) ?? []).length, 2);
+  assert.match(root.innerHTML, /salvo-friendly/);
+  assert.match(root.innerHTML, /salvo-hostile/);
   click('instructions');
   assert.match(root.innerHTML, /exactly one cell/);
   click('menu');
@@ -89,4 +92,14 @@ test('solo mode retains computer turns and a private enemy fleet', async () => {
   assert.match(root.innerHTML, /INCOMING FIRE/);
   click('continue');
   assert.match(root.innerHTML, /FIRING SOLUTION/);
+});
+
+
+test('animated ocean stays decorative, local, and motion-safe', () => {
+  const styles = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+  assert.match(styles, /assets\/ocean\.svg/);
+  assert.match(styles, /@keyframes outbound-shot/);
+  assert.match(styles, /@keyframes inbound-shot/);
+  assert.match(styles, /prefers-reduced-motion: reduce/);
+  assert.equal(existsSync(new URL('../assets/ocean.svg', import.meta.url)), true);
 });
