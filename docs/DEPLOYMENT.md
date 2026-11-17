@@ -23,6 +23,14 @@ The development command prints a local URL. Use the server rather than opening `
 
 If deployment fails, check Pages source configuration, the `github-pages` environment approvals, and Actions permissions. The build only uploads an explicit allowlist of game files—not tests, repository metadata, or the archived desktop binaries.
 
+## Protect production before merging
+
+At the time of this handoff, GitHub reports `main` is **not protected** and no repository ruleset is active. A workflow file cannot enforce repository-level protection by itself.
+
+In **Settings → Rules → Rulesets**, create an active branch ruleset targeting only `main`. Require changes through pull requests and a passing **Validate browser game** check; disallow force pushes and branch deletion. Do **not** require the skipped `Deploy GitHub Pages` job as a PR check. Only require an approval count if a separate reviewer is available, so sole-maintainer PRs do not deadlock.
+
+This repository-settings step must be performed by a repository administrator; it cannot be applied by this code-only PR.
+
 ## Contribution rules
 
 - `main` is the production branch. Use a feature/fix branch and a pull request; do not push straight to `main`.
