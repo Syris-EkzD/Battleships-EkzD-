@@ -21,7 +21,7 @@ jobs:
           node-version: '22'
       - name: Check JavaScript syntax
         run: npm run check
-      - name: Run game rule tests
+      - name: Run game rule and interface tests
         run: npm test
       - name: Stage static site for publishing
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
@@ -29,6 +29,7 @@ jobs:
           mkdir -p dist/src
           cp index.html styles.css dist/
           cp src/app.js src/game.js dist/src/
+          cp -R assets dist/assets
           touch dist/.nojekyll
           test -s dist/index.html
       - name: Upload Pages artifact
